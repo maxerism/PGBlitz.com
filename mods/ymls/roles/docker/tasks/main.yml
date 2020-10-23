@@ -96,7 +96,7 @@
 
 - name: Add docker official repository for {{ ansible_distribution|lower }} - {{ ansible_distribution_release }}
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} edge
+    repo: deb [arch=arm64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} edge
     state: present
 
 #install part

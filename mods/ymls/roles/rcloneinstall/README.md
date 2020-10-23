@@ -25,9 +25,9 @@ Available variables are listed below, along with default values (see `defaults/m
 
 This can be used to toggle the installation of manpages.
 
-    rclone_arch: "amd64"
+    rclone_arch: "arm64"
 
-This variable chooses the target architecture (for example 'amd64').
+This variable chooses the target architecture (for example 'arm64').
 
     rclone_version: ""
 
