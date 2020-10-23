@@ -66,7 +66,7 @@
     - name: Clone Fork
       git:
         repo: "https://github.com/{{projectfinal.stdout}}/PGBlitz.com"
-        dest: /pg/plexguide
+        dest: /opt/plexguide
         version: "{{versionfinal.stdout}}"
         force: yes
 
