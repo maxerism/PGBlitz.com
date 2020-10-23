@@ -197,11 +197,11 @@ prune () {
 hetzner () {
   if [ -e "$file" ]; then rm -rf /bin/hcloud; fi
   version="v1.10.0"
-  wget -P /opt/appdata/plexguide "https://github.com/hetznercloud/cli/releases/download/$version/hcloud-linux-amd64-$version.tar.gz"
-  tar -xvf "/opt/appdata/plexguide/hcloud-linux-amd64-$version.tar.gz" -C /opt/appdata/plexguide
-  mv "/opt/appdata/plexguide/hcloud-linux-amd64-$version/bin/hcloud" /bin/
-  rm -rf /opt/appdata/plexguide/hcloud-linux-amd64-$version.tar.gz
-  rm -rf /opt/appdata/plexguide/hcloud-linux-amd64-$version
+  wget -P /opt/appdata/plexguide "https://github.com/hetznercloud/cli/releases/download/$version/hcloud-linux-arm64-$version.tar.gz"
+  tar -xvf "/opt/appdata/plexguide/hcloud-linux-arm64-$version.tar.gz" -C /opt/appdata/plexguide
+  mv "/opt/appdata/plexguide/hcloud-linux-arm64-$version/bin/hcloud" /bin/
+  rm -rf /opt/appdata/plexguide/hcloud-linux-arm64-$version.tar.gz
+  rm -rf /opt/appdata/plexguide/hcloud-linux-arm64-$version
 }
 
 gcloud () {
@@ -225,21 +225,21 @@ mergerinstall () {
     if [ "$ub16check" != "" ]; then
     activated=true
     echo "ub16" > /var/plexguide/mergerfs.version
-    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-xenial_amd64.deb"
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-xenial_arm64.deb"
 
     elif [ "$ub18check" != "" ]; then
       activated=true
       echo "ub18" > /var/plexguide/mergerfs.version
-      wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_arm64.deb"
 
     elif [ "$deb9check" != "" ]; then
       activated=true
       echo "deb9" > /var/plexguide/mergerfs.version
-      wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.debian-stretch_amd64.deb"
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.debian-stretch_arm64.deb"
 
     elif [ "$activated" != "true" ]; then
       activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
-      wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_arm64.deb"
     else
       apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
       git clone https://github.com/trapexit/mergerfs.git
@@ -249,8 +249,8 @@ mergerinstall () {
       cd ..
     fi
 
-    apt install -y ./mergerfs*_amd64.deb
-    rm mergerfs*_amd64.deb
+    apt install -y ./mergerfs*_arm64.deb
+    rm mergerfs*_arm64.deb
 }
 
 motd () {
